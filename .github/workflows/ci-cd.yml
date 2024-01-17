@@ -18,5 +18,4 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -i ubuntu@65.0.71.130 'cd /var/www/html/ci-cd-practice && git checkout master && git pull origin master && sudo pm2 reload 0'
-        env:
-          SSH_PRIVATE_KEY: ${{ ec2-server-key }}
+        
