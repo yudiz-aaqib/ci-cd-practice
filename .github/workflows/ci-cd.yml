@@ -1,4 +1,4 @@
-name: Deploy to EC2
+name: Aaqib-ci_cd
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
