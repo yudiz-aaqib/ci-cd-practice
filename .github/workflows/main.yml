@@ -1,0 +1,26 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [ pipeline-testing ]
+
+# jobs:
+#   deploy:
+#     runs-on: self-hosted
+jobs:
+  changes:
+    runs-on: self-hosted
+
+    steps:
+      # - name: Checkout code
+      #   uses: actions/checkout@v2
+      - name: Run deployment script via SSH
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            mkdir pipeline-testing
+            cd pipeline-testing
+            touch hello.txt
